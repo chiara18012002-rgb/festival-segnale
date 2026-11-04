@@ -1,14 +1,13 @@
-/* Stile iniziale: tipografia, colori e variabili CSS sono già predisposti.
-   Lavoreremo su collegamenti, CSS condiviso e disposizione delle schede. */
+/* Stile condiviso: Segnale — Festival di design */
 
-/* Scelte comuni: ogni regola usa var() per richiamarne il valore. */
 :root {
-  --colore-primario: #245c49;
-  --colore-primario-scuro: #173f32;
+  /* Personalizzazione colori primario e variante scura hover */
+  --colore-primario: #2b881d;
+  --colore-primario-scuro: #125820;
   --colore-sfondo: #f5f2e9;
   --colore-testo: #202923;
-  --font-testo: Arial, Helvetica, sans-serif;
-  --font-titoli: Georgia, "Times New Roman", serif;
+  --font-testo: system-ui, -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Helvetica, Arial, sans-serif;
+  --font-titoli: "Georgia", "Times New Roman", serif;
 }
 
 * {
@@ -45,7 +44,7 @@ a:focus-visible {
 
 .site-header {
   padding: 1.25rem 0;
-  border-bottom: 4px solid #d8d2c5;
+  border-bottom: 4px solid var(--colore-primario);
 }
 
 .brand {
@@ -79,7 +78,7 @@ nav a[aria-current="page"] {
 }
 
 .intro {
-  padding: 3rem 0 1rem;
+  padding: 3rem 0 1.5rem;
 }
 
 .eyebrow,
@@ -136,7 +135,7 @@ h3 {
 }
 
 .content-section {
-  margin: 2rem 0 3rem;
+  margin: 2.5rem 0 3.5rem;
 }
 
 .festival-image {
@@ -156,10 +155,14 @@ h3 {
   margin-bottom: 0.5rem;
 }
 
-/* Qui inseriremo la regola .event-grid durante la demo. */
+/* Griglia eventi base (Mobile: < 600px) */
+.event-grid {
+  display: grid;
+  grid-template-columns: 1fr;
+  gap: 1.75rem;
+}
 
 .event-card {
-  margin-bottom: 1.5rem;
   overflow: hidden;
   border: 1px solid #b7c0b7;
   border-radius: 0.75rem;
@@ -173,7 +176,7 @@ h3 {
 }
 
 .event-body {
-  padding: 1.25rem;
+  padding: 1.5rem;
 }
 
 .event-body p:last-child {
@@ -205,4 +208,16 @@ h3 {
   top: 1rem;
 }
 
-/* Qui aggiungeremo la media query durante la demo. */
+/* Media query per tablet e schermi intermedi (600px - 1023px): 2 colonne */
+@media (min-width: 600px) {
+  .event-grid {
+    grid-template-columns: repeat(2, 1fr);
+  }
+}
+
+/* Media query per desktop (>= 1024px): 3 colonne */
+@media (min-width: 1024px) {
+  .event-grid {
+    grid-template-columns: repeat(3, 1fr);
+  }
+}
